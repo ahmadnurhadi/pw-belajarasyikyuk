@@ -1,0 +1,23 @@
+{
+  "name": "pw-belajarasyikyuk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadnurhadi/pw-belajarasyikyuk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ahmadnurhadi/pw-belajarasyikyuk/issues"
+  },
+  "homepage": "https://github.com/ahmadnurhadi/pw-belajarasyikyuk#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5"
+  }
+}
