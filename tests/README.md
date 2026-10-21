@@ -13,11 +13,12 @@ npx playwright install chromium
 npm test
 ```
 
-Tests that need a test account are skipped unless `BA_TEST_EMAIL` and
-`BA_TEST_PASSWORD` are provided. Set them through a local secret manager or
-the current shell environment; do not put credentials in source files,
-screenshots, traces, or committed `.env` files. For an interactive PowerShell
-session, enter the password with a secure prompt:
+Tests that need a test account are skipped unless credentials are provided as
+`BA_TEST_EMAIL` and `BA_TEST_PASSWORD` (or the aliases `TEST_EMAIL` and
+`TEST_PASSWORD`). `dotenv/config` loads these values from a local, ignored
+`.env` file or the current shell environment. Do not commit credentials or
+include them in screenshots or traces. For an interactive PowerShell session,
+enter the password with a secure prompt:
 
 ```powershell
 $env:BA_TEST_EMAIL = Read-Host "Test account email"

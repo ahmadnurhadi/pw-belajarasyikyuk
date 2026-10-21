@@ -60,27 +60,45 @@ test('registration form exposes grade and student fields without submitting', as
   );
 
   for (let grade = 1; grade <= 6; grade += 1) {
-    await expect(page.getByRole('button', { name: String(grade) })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: String(grade) }),
+    ).toBeVisible();
   }
 });
 
 test('test account can sign in and sign out', async ({ page }) => {
-  test.skip(!hasTestCredentials, 'Set BA_TEST_EMAIL and BA_TEST_PASSWORD.');
+  test.skip(
+    !hasTestCredentials,
+    'Set BA_TEST_EMAIL and BA_TEST_PASSWORD (or TEST_EMAIL and TEST_PASSWORD).',
+  );
 
   const authPage = new AuthPage(page);
+
   await authPage.open();
-  await authPage.login(testCredentials.email!, testCredentials.password!);
+  await authPage.login(
+    testCredentials.email!,
+    testCredentials.password!,
+  );
 
   await expect(page).toHaveURL(/\/dashboard$/);
+
   await expect(
     page.getByRole('heading', { name: 'Progress Belajar' }),
   ).toBeVisible();
 
-  const accountAction = page.getByRole('banner').getByRole('button').last();
+  const accountAction = page
+    .getByRole('banner')
+    .getByRole('button')
+    .last();
+
   await accountAction.click();
+
   await expect(page).toHaveURL('/');
-  await expect(page.getByRole('link', { name: 'Masuk' })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Masuk' }),
+  ).toBeVisible();
 
   await page.goto('/dashboard');
+
   await expect(page).toHaveURL(/\/auth$/);
 });
