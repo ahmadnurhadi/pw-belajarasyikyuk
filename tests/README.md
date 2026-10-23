@@ -29,7 +29,7 @@ Remove-Item Env:BA_TEST_EMAIL, Env:BA_TEST_PASSWORD
 ```
 
 The authentication checks log in using that account. The dashboard and
-navigation smoke test reads feature pages but avoids state-changing actions.
+navigation smoke tests read feature pages but avoid state-changing actions.
 Application-side login/streak behavior may still run when an authenticated
 session is opened.
 
@@ -46,6 +46,15 @@ viewport within a test.
 - Lesson links show an XP cost; they are not opened by the smoke suite.
 - Coin conversion, paid games, and marking all notifications read are not
   exercised because they mutate account state.
+- The game catalogue shows seven enabled options with costs from 5 to 10 Koin.
+  Tests verify the cards and visible prices but do not start a game, since doing
+  so may spend the test account's coins.
+- The leaderboard's class filter and Streak, Koin, and Cek Login tabs are
+  exercised. Tests verify class filtering without recording leaderboard names.
+- Tutorial search and lesson guidance (steps, examples, tips, parent guidance)
+  are exercised. The embedded YouTube player for the selected tutorial
+  currently reports **"Video unavailable"**. The video-availability test is
+  expected to fail until the application's video source is corrected.
 - The dashboard account action had no accessible name in the browser
   accessibility snapshot. The logout smoke check currently identifies it as
   the last button in the banner; add an accessible name in the application
